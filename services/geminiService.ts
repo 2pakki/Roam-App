@@ -16,13 +16,7 @@ export const getNearbyPlaces = async (
     const response = await ai.models.generateContent({
       model: MODEL_NAME,
       contents: `
-        FIND REAL LIVE EVENTS in Trivandrum (Thiruvananthapuram), Kerala for TODAY, THIS WEEK, and THIS WEEKEND.
-        
-        SOURCES TO SEARCH:
-        - BookMyShow Trivandrum
-        - Insider.in / Paytm Insider Trivandrum
-        - Instagram: @whatshappeningaroundtrivandrum, @trivandrumlife
-        - Local News: The Hindu (Trivandrum Edition), New Indian Express
+        Suggest popular events and places in Trivandrum (Thiruvananthapuram), Kerala suitable for TODAY, THIS WEEK, and THIS WEEKEND.
         
         FILTER BY USER PREFERENCES:
         Group: ${preferences.group}
@@ -33,7 +27,7 @@ export const getNearbyPlaces = async (
         Example: Instead of "food", use "kerala beef fry parotta restaurant". Instead of "concert", use "outdoor music stage blue neon lighting".
       `,
       config: {
-        tools: [{ googleSearch: {} }],
+        // tools: [{ googleSearch: {} }], // Removed to ensure valid JSON response
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
