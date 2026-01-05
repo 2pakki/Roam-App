@@ -1,7 +1,8 @@
-// Augment the NodeJS ProcessEnv interface to include API_KEY.
-// This avoids conflicts with existing 'process' declarations from @types/node.
+// References removed to fix "Cannot find type definition file" errors
+
 declare namespace NodeJS {
   interface ProcessEnv {
-    API_KEY: string;
+    readonly API_KEY: string;
+    [key: string]: string | undefined;
   }
 }
