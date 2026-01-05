@@ -121,6 +121,13 @@ export const generateTravelResponse = async (
     const fullText = result.text || "";
     let recommendedPlace: PlaceCardData | undefined;
 
+    // Extract grounding sources
+    const groundingChunks = result.candidates?.[0]?.groundingMetadata?.groundingChunks;
+    const groundingSources = groundingChunks?.map((chunk: any) => ({
+      title: chunk.web?.title || 'Source',
+      uri: chunk.web?.uri
+    })).filter((s: any) => s.uri) || [];
+
     if (fullText.includes('---REC---')) {
       const parts = fullText.split('---REC---');
       const recContent = parts[1].split('---END---')[0];
@@ -152,7 +159,8 @@ export const generateTravelResponse = async (
       role: Role.MODEL,
       text: fullText.split('---REC---')[0].trim() || "I found a great event for you!",
       timestamp: new Date(),
-      recommendedPlace
+      recommendedPlace,
+      groundingSources: groundingSources.length > 0 ? groundingSources : undefined
     };
   } catch (e) {
     return { id: 'err', role: Role.MODEL, text: "Connectivity issue with TVM event server.", timestamp: new Date() };
