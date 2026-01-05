@@ -1,0 +1,7 @@
+{
+  "name": "Roam",
+  "description": "An AI-powered travel companion that helps you discover what's happening around you based on your preferences using Google Maps data.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
