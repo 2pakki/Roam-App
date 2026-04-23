@@ -59,7 +59,7 @@ python sync_script.py
 
 ---
 
-## 4. Presentation / "No-Gemini" Mode 🚀
+## 4. Presentation / "No-Gemini" Mode 
 
 To prevent hitting the 20-request daily limit during your presentation tomorrow, I have added two safety toggles:
 
