@@ -1,17 +1,33 @@
-import { defineConfig, loadEnv } from 'vite'
-import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import {defineConfig, loadEnv} from 'vite';
+import dotenv from 'dotenv';
+import fs from 'fs';
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  // Use '.' to refer to current directory to avoid potential path issues
+export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
-  return {
-    plugins: [react()],
-    define: {
-      // Explicitly define the API key
-      'process.env.API_KEY': JSON.stringify(env.API_KEY),
-      // Prevent crash if a library tries to access process.env.NODE_ENV or similar
-      'process.env': JSON.stringify({}) 
-    }
+  
+  // Manually parse .env to override AI Studio's placeholder
+  if (fs.existsSync('.env')) {
+    const parsed = dotenv.parse(fs.readFileSync('.env'));
+    Object.assign(env, parsed);
   }
-})
+
+  return {
+    plugins: [react(), tailwindcss()],
+    define: {
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || env.GEMIN_API_KEY),
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '.'),
+      },
+    },
+    server: {
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+      hmr: process.env.DISABLE_HMR !== 'true',
+    },
+  };
+});

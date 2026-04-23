@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores user credentials and basic security preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "LiveEvent": {
+      "title": "Live Event",
+      "description": "Cached event details from Instagram/Gemini.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "eventName": { "type": "string" },
+        "description": { "type": "string" },
+        "location": { "type": "string" },
+        "date": { "type": "string", "format": "date-time", "description": "ISO 8601 timestamp" },
+        "imageUrl": { "type": "string", "format": "uri" },
+        "source": { "type": "string", "format": "uri" },
+        "ticketUrl": { "type": "string", "format": "uri" },
+        "eventVector": { "type": "object" },
+        "cachedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["eventName", "date", "cachedAt"]
+    },
+    "AppMetadata": {
+      "title": "App Metadata",
+      "description": "Global application state like last search time.",
+      "type": "object",
+      "properties": {
+        "lastSearchTimestamp": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents."
+    },
+    "cached_events/{eventId}": {
+      "schema": "LiveEvent",
+      "description": "Cached events to avoid redundant Gemini searches."
+    },
+    "metadata/global": {
+      "schema": "AppMetadata",
+      "description": "Global app state."
+    }
+  }
+}

@@ -1,0 +1,7 @@
+instaloader
+requests
+schedule
+google-generativeai
+firebase-admin
+python-dotenv
+google-search-results

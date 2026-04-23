@@ -1,7 +1,5 @@
 {
   "name": "Roam",
-  "description": "An AI-powered travel companion that helps you discover what's happening around you based on your preferences using Google Maps data.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
+  "description": "A local event and travel discovery app for Trivandrum that scrapes and curates events using AI.",
+  "requestFramePermissions": []
 }
