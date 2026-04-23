@@ -27,7 +27,6 @@ Create a `.env` file in the root directory with the following variables:
 ```env
 # API Keys (Get these from Google AI Studio and SerpApi)
 GEMINI_API_KEY="your_gemini_key"
-SERPAPI_API_KEY="your_serp_key"
 
 # Database Configuration
 # 1. Go to Firebase Console > Project Settings > Service Accounts
