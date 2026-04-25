@@ -62,13 +62,6 @@ python sync_script.py
 ```
 This fetches the latest posts from Instagram and populates your Firebase database with AI-parsed events.
 
-##  Presentation Mode
-
-Roam includes a special **"Presentation Safe Mode"** to ensure your demos never fail due to API quotas:
-1. Navigate to **Profile -> Admin Mode**.
-2. Toggle **Presentation Safety Mode** in the dashboard.
-3. This will route AI requests to a local mock engine while keeping the UI fully interactive.
-
 ---
 
 Built with ❤️ for the community of Thiruvananthapuram.
