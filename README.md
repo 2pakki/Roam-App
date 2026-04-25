@@ -14,6 +14,7 @@ Roam is a premium, AI-driven platform designed to help you discover the heartbea
 
 ## Tech Stack
 
+
 - **Frontend**: React 19 + Vite + TypeScript
 - **Styling**: Tailwind CSS + Framer Motion
 - **Backend**: Express (for proxying and server-side logic)
