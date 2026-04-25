@@ -2,7 +2,6 @@
 
 Roam is a premium, AI-driven platform designed to help you discover the heartbeat of Thiruvananthapuram. It combines real-time Instagram scraping with state-of-the-art AI parsing to curate and categorize the best events, festivals, workshops, and hidden gems in the city.
 
-![Roam Hero Banner](https://images.unsplash.com/photo-1596701062351-be1ef9a37c52?q=80&w=2070&auto=format&fit=crop)
 
 ## Key Features
 
